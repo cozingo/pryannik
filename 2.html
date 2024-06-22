@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+	<script type="text/javascript">
+		
+		const canvas = document.getElementById('canvas');
+    	const ctx = canvas.getContext('2d');
+
+    	const image = new Image();
+	    image.src = '2.jpg'; 
+	    image.onload = function() {
+	        // Resize canvas to match image size
+	        canvas.width = image.width;
+	        canvas.height = image.height;
+
+	        // Draw the image
+	        ctx.drawImage(image, 0, 0);
+
+	        // Set text properties
+	        ctx.font = '24px serif';  // Change font size and style as needed
+	        ctx.fillStyle = 'red';  // Change the color of the text
+	        ctx.textAlign = 'center';  // Align text in the center
+
+
+	        ctx.fillText(getFormattedDate(), 349, 242);
+	        ctx.fillText(getFormattedDate(), 762, 242);
+	        ctx.fillText(getFormattedDate(), 1176, 242);
+
+	        ctx.fillText(getFormattedDate(), 349, 493);
+	        ctx.fillText(getFormattedDate(), 762, 493);
+	        ctx.fillText(getFormattedDate(), 1176, 493);
+
+	        ctx.fillText(getFormattedDate(), 349, 744);
+	        ctx.fillText(getFormattedDate(), 762, 744);
+	        ctx.fillText(getFormattedDate(), 1176, 744);
+
+	        ctx.fillText(getFormattedDate(), 349, 995);
+	        ctx.fillText(getFormattedDate(), 762, 995);
+	        ctx.fillText(getFormattedDate(), 1176, 995);
+
+	        ctx.fillText(getFormattedDate(), 349, 1246);
+	        ctx.fillText(getFormattedDate(), 762, 1246);
+	        ctx.fillText(getFormattedDate(), 1176, 1246);
+
+	        ctx.fillText(getFormattedDate(), 349, 1495);
+	        ctx.fillText(getFormattedDate(), 762, 1495);
+	        ctx.fillText(getFormattedDate(), 1176, 1495);
+
+	        ctx.fillText(getFormattedDate(), 349, 1744);
+	        ctx.fillText(getFormattedDate(), 762, 1744);
+	        ctx.fillText(getFormattedDate(), 1176, 1744);
+	    };
+
+
+
+
+	    function getFormattedDate() {
+		    const date = new Date(); // Creates a new Date object for the current date and time
+		    const day = String(date.getDate()).padStart(2, '0'); // Gets the day and ensures it is two digits
+		    const month = String(date.getMonth() + 1).padStart(2, '0'); // Gets the month, adds 1 (since months start at 0), and ensures it is two digits
+		    const year = date.getFullYear(); // Gets the full year
+
+		    return `${day}.${month}.${year}`; // Returns the formatted date
+		}
+
+	</script>
+</body>
+</html>

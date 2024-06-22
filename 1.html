@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+	<script type="text/javascript">
+		
+		const canvas = document.getElementById('canvas');
+    	const ctx = canvas.getContext('2d');
+
+    	const image = new Image();
+	    image.src = '1.jpg'; 
+	    image.onload = function() {
+	        // Resize canvas to match image size
+	        canvas.width = image.width;
+	        canvas.height = image.height;
+
+	        // Draw the image
+	        ctx.drawImage(image, 0, 0);
+
+	        // Set text properties
+	        ctx.font = '24px serif';  // Change font size and style as needed
+	        ctx.fillStyle = 'red';  // Change the color of the text
+	        ctx.textAlign = 'center';  // Align text in the center
+
+
+	        ctx.fillText(getFormattedDate(), 415, 384);
+
+	        ctx.fillText(getFormattedDate(), 415, 922);
+
+	        ctx.fillText(getFormattedDate(), 415, 1460);
+
+	        drawRotatedText(getFormattedDate(), 415, 436);
+
+	        drawRotatedText(getFormattedDate(), 415, 974);
+
+	        drawRotatedText(getFormattedDate(), 415, 1511);
+
+	        drawRotatedText(getFormattedDate(), 1063, 550, 270);
+
+	        drawRotatedText(getFormattedDate(), 1063, 1353, 270);
+
+	    };
+
+
+
+
+	    function getFormattedDate() {
+		    const date = new Date(); // Creates a new Date object for the current date and time
+		    const day = String(date.getDate()).padStart(2, '0'); // Gets the day and ensures it is two digits
+		    const month = String(date.getMonth() + 1).padStart(2, '0'); // Gets the month, adds 1 (since months start at 0), and ensures it is two digits
+		    const year = date.getFullYear(); // Gets the full year
+
+		    return `${day}.${month}.${year}`; // Returns the formatted date
+		}
+
+		function drawRotatedText(text, x, y, angle = 180) {
+	        const radians = angle * Math.PI / 180; // Convert angle in degrees to radians
+
+	        // Save the unmodified context
+	        ctx.save();
+
+	        // Translate to the point around which you want to rotate
+	        ctx.translate(x, y);
+
+	        // Rotate the context
+	        ctx.rotate(radians);
+
+	        // Draw the text at the origin, now rotated around (x, y)
+	        ctx.fillText(text, 0, 0);
+
+	        // Restore the context to its unmodified state
+	        ctx.restore();
+	    }
+
+	</script>
+</body>
+</html>
